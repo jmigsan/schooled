@@ -28,7 +28,6 @@ const Home: NextPage = () => {
   };
 
   type PostWithAuthor = RouterOutputs["posts"]["getAll"][number];
-
   dayjs.extend(relativeTime);
 
   const PostView = (props: PostWithAuthor) => {
