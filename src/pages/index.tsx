@@ -1,17 +1,21 @@
 import { SignInButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import { type NextPage } from "next";
 import Head from "next/head";
 import SignOutButton from "~/components/auth/SignOutButton";
+import LoadingSpinner from "~/components/loading/LoadingSpinner";
 
 import { RouterOutputs, api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const posts = api.posts.getAll.useQuery();
-  console.log(posts.data);
+  const user = useUser();
+
+  if (!user.isLoaded) {
+    return <LoadingSpinner />;
+  }
 
   const CreatePost = () => {
-    const { user } = useUser();
-
     return (
       <div>
         <input
@@ -25,6 +29,8 @@ const Home: NextPage = () => {
 
   type PostWithAuthor = RouterOutputs["posts"]["getAll"][number];
 
+  dayjs.extend(relativeTime);
+
   const PostView = (props: PostWithAuthor) => {
     const { author, post } = props;
 
@@ -32,11 +38,33 @@ const Home: NextPage = () => {
       <div className="border-2 border-solid border-white p-2">
         <img
           src={author.profileImageUrl}
-          alt="Profile pic"
+          alt={`Profile pic of ${author.id}`}
           className="float-right w-12"
         />
-        <p>{post.authorId}</p>
+        <p>
+          {post.authorId} - {dayjs(post.createdAt).fromNow()}
+        </p>
         <p>{post.content}</p>
+      </div>
+    );
+  };
+
+  const Feed = () => {
+    const posts = api.posts.getAll.useQuery();
+
+    if (posts.isLoading) {
+      return (
+        <div className="p-4">
+          <LoadingSpinner />
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex flex-col gap-4">
+        {posts.data?.map((post) => (
+          <PostView {...post} key={post.post.id} />
+        ))}
       </div>
     );
   };
@@ -61,11 +89,7 @@ const Home: NextPage = () => {
           <CreatePost />
         </section>
         <section>
-          <div className="flex flex-col gap-4">
-            {posts.data?.map((post) => (
-              <PostView {...post} key={post.post.id} />
-            ))}
-          </div>
+          <Feed />
         </section>
       </main>
     </>
