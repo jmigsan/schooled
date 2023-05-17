@@ -1,14 +1,45 @@
-import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
 import SignOutButton from "~/components/auth/SignOutButton";
-import CreatePost from "~/components/index/CreatePost";
 
-import { api } from "~/utils/api";
+import { RouterOutputs, api } from "~/utils/api";
 
 const Home: NextPage = () => {
   const posts = api.posts.getAll.useQuery();
   console.log(posts.data);
+
+  const CreatePost = () => {
+    const { user } = useUser();
+
+    return (
+      <div>
+        <input
+          type="text"
+          placeholder="Write here..."
+          className="p-2 text-black"
+        />
+      </div>
+    );
+  };
+
+  type PostWithAuthor = RouterOutputs["posts"]["getAll"][number];
+
+  const PostView = (props: PostWithAuthor) => {
+    const { author, post } = props;
+
+    return (
+      <div className="border-2 border-solid border-white p-2">
+        <img
+          src={author.profileImageUrl}
+          alt="Profile pic"
+          className="float-right w-12"
+        />
+        <p>{post.authorId}</p>
+        <p>{post.content}</p>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -32,12 +63,7 @@ const Home: NextPage = () => {
         <section>
           <div className="flex flex-col gap-4">
             {posts.data?.map((post) => (
-              <div
-                className="border-2 border-solid border-white p-2"
-                key={post.id}
-              >
-                {post.content}
-              </div>
+              <PostView {...post} key={post.post.id} />
             ))}
           </div>
         </section>
