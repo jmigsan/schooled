@@ -37,7 +37,10 @@ const Home: NextPage = () => {
           onChange={(e) => setInput(e.target.value)}
           disabled={createPostMutation.isLoading}
         />
-        <button onClick={() => createPostMutation.mutate({ content: input })}>
+        <button
+          onClick={() => createPostMutation.mutate({ content: input })}
+          disabled={createPostMutation.isLoading}
+        >
           Post
         </button>
       </div>
