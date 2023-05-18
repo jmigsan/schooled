@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { type NextPage } from "next";
 import Head from "next/head";
+import { useState } from "react";
 import SignOutButton from "~/components/auth/SignOutButton";
 import LoadingSpinner from "~/components/loading/LoadingSpinner";
 
@@ -16,13 +17,29 @@ const Home: NextPage = () => {
   }
 
   const CreatePost = () => {
+    const ctx = api.useContext();
+
+    const createPostMutation = api.posts.createPost.useMutation({
+      onSuccess: () => {
+        setInput("");
+        ctx.posts.invalidate();
+      },
+    });
+    const [input, setInput] = useState("");
+
     return (
-      <div>
+      <div className="flex gap-3">
         <input
           type="text"
           placeholder="Write here..."
           className="p-2 text-black"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          disabled={createPostMutation.isLoading}
         />
+        <button onClick={() => createPostMutation.mutate({ content: input })}>
+          Post
+        </button>
       </div>
     );
   };
