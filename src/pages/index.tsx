@@ -24,7 +24,7 @@ const Home: NextPage = () => {
     const createPostMutation = api.posts.createPost.useMutation({
       onSuccess: () => {
         setInput("");
-        ctx.posts.invalidate();
+        void ctx.posts.invalidate();
         toast.success("Post added");
       },
       onError: (e) => {
