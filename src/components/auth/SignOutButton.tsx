@@ -4,7 +4,7 @@ const SignOutButton = () => {
   const { signOut } = useClerk();
 
   const clickSignOut = () => {
-    signOut();
+    void signOut();
   };
 
   return <button onClick={clickSignOut}>Sign out</button>;
