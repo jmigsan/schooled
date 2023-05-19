@@ -13,8 +13,6 @@ const Account: NextPage = () => {
     <>
       <Head>
         <title>Schooled - Account</title>
-        <meta name="description" content="📚" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col gap-4 p-4">
         <section>

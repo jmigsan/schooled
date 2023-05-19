@@ -62,7 +62,7 @@ const Home: NextPage = () => {
             alt={`Profile pic of ${author.id}`}
             className="float-right w-12"
           />
-          <Link href={`/@${author.id}`}>
+          <Link href={`/${author.id}`}>
             <p>
               {post.authorId} - {dayjs(post.createdAt).fromNow()}
             </p>
@@ -95,11 +95,6 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Schooled</title>
-        <meta name="description" content="📚" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main className="flex flex-col gap-4 p-4">
         <header>
           <SignedIn>

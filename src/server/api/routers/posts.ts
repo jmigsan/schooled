@@ -7,6 +7,7 @@ import {
   privateProcedure,
   publicProcedure,
 } from "~/server/api/trpc";
+import { filterUser } from "../helpers/filterUser";
 
 export const postsRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
@@ -21,14 +22,6 @@ export const postsRouter = createTRPCRouter({
       userId: postsAuthors,
       limit: 10,
     });
-
-    const filterUser = (user: User) => {
-      return {
-        id: user.id,
-        email: user.emailAddresses,
-        profileImageUrl: user.profileImageUrl,
-      };
-    };
 
     const usersFiltered = users.map(filterUser);
 
