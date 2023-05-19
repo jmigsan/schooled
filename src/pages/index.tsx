@@ -72,25 +72,25 @@ const Home: NextPage = () => {
     const { author, post } = props;
 
     return (
-      <Link href={`/post/${post.id}`}>
-        <div className="border-2 border-solid border-white p-2">
-          <div className="flex items-center gap-2">
-            <Link href={`/${author.id}`}>
-              <img
-                src={author.profileImageUrl}
-                alt={`Profile pic of ${author.id}`}
-                className="w-10"
-              />
-            </Link>
-            <Link href={`/${author.id}`}>
-              <p>
-                {post.authorId} - {dayjs(post.createdAt).fromNow()}
-              </p>
-            </Link>
-          </div>
-          <p>{post.content}</p>
+      <div className="border-2 border-solid border-white p-2">
+        <div className="flex items-center gap-2">
+          <Link href={`/${author.id}`}>
+            <img
+              src={author.profileImageUrl}
+              alt={`Profile pic of ${author.id}`}
+              className="w-10"
+            />
+          </Link>
+          <Link href={`/${author.id}`}>
+            <p>
+              {post.authorId} - {dayjs(post.createdAt).fromNow()}
+            </p>
+          </Link>
         </div>
-      </Link>
+        <Link href={`/post/${post.id}`}>
+          <p>{post.content}</p>
+        </Link>
+      </div>
     );
   };
 
