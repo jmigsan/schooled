@@ -5,6 +5,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import SignOutButton from "~/components/auth/SignOutButton";
 import LoadingSpinner from "~/components/loading/LoadingSpinner";
 
@@ -24,9 +25,22 @@ const Home: NextPage = () => {
       onSuccess: () => {
         setInput("");
         ctx.posts.invalidate();
+        toast.success("Post added");
+      },
+      onError: (e) => {
+        const errorMessage = e.data?.zodError?.fieldErrors.content;
+        if (errorMessage && errorMessage[0]) {
+          toast.error(`Error: ${errorMessage[0]}`);
+        } else {
+          toast.error("Failed to post");
+        }
       },
     });
     const [input, setInput] = useState("");
+
+    const SubmitPost = () => {
+      createPostMutation.mutate({ content: input });
+    };
 
     return (
       <div className="flex gap-3">
@@ -37,11 +51,14 @@ const Home: NextPage = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           disabled={createPostMutation.isLoading}
+          onKeyUp={(e) => {
+            if (e.key === "Enter") {
+              SubmitPost();
+            }
+            console.log("hey");
+          }}
         />
-        <button
-          onClick={() => createPostMutation.mutate({ content: input })}
-          disabled={createPostMutation.isLoading}
-        >
+        <button onClick={SubmitPost} disabled={createPostMutation.isLoading}>
           Post
         </button>
       </div>
@@ -57,16 +74,20 @@ const Home: NextPage = () => {
     return (
       <Link href={`/post/${post.id}`}>
         <div className="border-2 border-solid border-white p-2">
-          <img
-            src={author.profileImageUrl}
-            alt={`Profile pic of ${author.id}`}
-            className="float-right w-12"
-          />
-          <Link href={`/${author.id}`}>
-            <p>
-              {post.authorId} - {dayjs(post.createdAt).fromNow()}
-            </p>
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link href={`/${author.id}`}>
+              <img
+                src={author.profileImageUrl}
+                alt={`Profile pic of ${author.id}`}
+                className="w-10"
+              />
+            </Link>
+            <Link href={`/${author.id}`}>
+              <p>
+                {post.authorId} - {dayjs(post.createdAt).fromNow()}
+              </p>
+            </Link>
+          </div>
           <p>{post.content}</p>
         </div>
       </Link>
