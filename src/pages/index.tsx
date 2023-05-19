@@ -77,13 +77,13 @@ const Home: NextPage = () => {
           <Link href={`/${author.id}`}>
             <img
               src={author.profileImageUrl}
-              alt={`Profile pic of ${author.id}`}
+              alt={`Profile pic of ${author.username}`}
               className="w-10"
             />
           </Link>
           <Link href={`/${author.id}`}>
             <p>
-              {post.authorId} - {dayjs(post.createdAt).fromNow()}
+              {author.username} - {dayjs(post.createdAt).fromNow()}
             </p>
           </Link>
         </div>

@@ -1,10 +1,5 @@
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
-import {
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetStaticPropsType,
-  type NextPage,
-} from "next";
+import { GetStaticPaths, GetStaticProps, type NextPage } from "next";
 import Head from "next/head";
 import SignOutButton from "~/components/auth/SignOutButton";
 import { createServerSideHelpers } from "@trpc/react-query/server";
@@ -12,18 +7,17 @@ import { appRouter } from "~/server/api/root";
 import { api } from "~/utils/api";
 import { prisma } from "~/server/db";
 import superjson from "superjson";
+import Link from "next/link";
 
 const Profile: NextPage<{ slug: string }> = ({ slug }) => {
   const user = api.profile.getUserById.useQuery({
     id: slug,
   });
 
-  console.log(slug);
-
   return (
     <>
       <Head>
-        <title>Schooled - {slug}</title>
+        <title>Schooled - {user.data?.username}</title>
       </Head>
       <main className="flex flex-col gap-4 p-4">
         <header>
@@ -35,8 +29,15 @@ const Profile: NextPage<{ slug: string }> = ({ slug }) => {
           </SignedOut>
         </header>
         <section>
-          <div>{user.data?.id}</div>
-          <div>{user.data?.profileImageUrl}</div>
+          <div className="pb-2">
+            <Link href={"/"}>⬅ Go Back</Link>
+          </div>
+          <img
+            src={user.data?.profileImageUrl}
+            alt={`Profile pic of ${user.data?.username}`}
+            className="w-10"
+          />
+          <div>{user.data?.username}</div>
         </section>
       </main>
     </>
