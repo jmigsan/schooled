@@ -54,7 +54,7 @@ export const postsRouter = createTRPCRouter({
   createPost: privateProcedure
     .input(
       z.object({
-        content: z.string(),
+        content: z.string().min(1, "Please enter post content."),
       })
     )
     .mutation(async ({ ctx, input }) => {
