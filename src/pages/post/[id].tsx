@@ -1,33 +1,29 @@
-import { SignInButton, SignedIn, SignedOut, UserProfile } from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
 import SignOutButton from "~/components/auth/SignOutButton";
 
-import { api } from "~/utils/api";
-
-const Account: NextPage = () => {
-  const posts = api.posts.getAll.useQuery();
-  console.log(posts.data);
-
+const Post: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Schooled - Account</title>
+        <title>Schooled - View Post</title>
         <meta name="description" content="📚" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col gap-4 p-4">
-        <section>
+        <header>
           <SignedIn>
-            <UserProfile />
+            <SignOutButton />
           </SignedIn>
           <SignedOut>
             <SignInButton />
           </SignedOut>
-        </section>
+        </header>
+        <section></section>
       </main>
     </>
   );
 };
 
-export default Account;
+export default Post;
