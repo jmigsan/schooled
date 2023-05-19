@@ -32,11 +32,7 @@ const Profile: NextPage<{ slug: string }> = ({ slug }) => {
           <div className="pb-2">
             <Link href={"/"}>⬅ Go Back</Link>
           </div>
-          <img
-            src={user.data?.profileImageUrl}
-            alt={`Profile pic of ${user.data?.username}`}
-            className="w-10"
-          />
+          <img src={user.data?.profileImageUrl} className="w-10" />
           <div>{user.data?.username}</div>
         </section>
       </main>
