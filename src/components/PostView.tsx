@@ -10,7 +10,7 @@ const PostView = (props: PostWithAuthor) => {
   const { author, post } = props;
 
   return (
-    <div className="rounded-2xl bg-blue-100 p-4 shadow-lg">
+    <div className="rounded-2xl bg-red-400 p-4 text-white shadow-lg">
       <div className="flex items-center gap-3 ">
         <Link href={`/${author.id}`}>
           <img

@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 const AddPostButton = () => {
   return (
     <div className="fixed bottom-5 right-5">
-      <a href="/addpost">
-        <button className="flex items-center gap-2 rounded-full bg-blue-200 p-3">
+      <Link href="/addpost">
+        <button className="flex items-center gap-2 rounded-full bg-red-500 p-3 text-white hover:bg-red-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -18,7 +20,7 @@ const AddPostButton = () => {
           </svg>
           Add Post
         </button>
-      </a>
+      </Link>
     </div>
   );
 };

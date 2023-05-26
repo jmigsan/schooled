@@ -34,7 +34,7 @@ const CreatePost = () => {
     <div className="flex flex-col gap-3">
       <textarea
         placeholder="Write here..."
-        className="w-[35vw] rounded-xl p-2 text-black"
+        className="w-[55vw] rounded-xl p-2 text-black sm:w-[37vw]"
         rows={4}
         value={input}
         onChange={(e) => setInput(e.target.value)}
@@ -46,13 +46,15 @@ const CreatePost = () => {
         }}
       ></textarea>
 
-      <button
-        onClick={SubmitPost}
-        disabled={createPostMutation.isLoading}
-        className="rounded-xl bg-blue-200 p-3"
-      >
-        Post
-      </button>
+      <div>
+        <button
+          onClick={SubmitPost}
+          disabled={createPostMutation.isLoading}
+          className="rounded-xl bg-red-500 px-8 py-3 text-xl font-bold text-white hover:bg-red-600"
+        >
+          Post
+        </button>
+      </div>
     </div>
   );
 };

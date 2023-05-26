@@ -1,14 +1,9 @@
 import { type Config } from "tailwindcss";
 
 export default {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{ts,tsx}",
-    "./public/**/*.html",
-    "./node_modules/flowbite-react/**/*.js",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [],
 } satisfies Config;
