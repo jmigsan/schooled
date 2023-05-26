@@ -6,6 +6,7 @@ import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 import { Toaster } from "react-hot-toast";
+import Script from "next/script";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
@@ -19,9 +20,9 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           rel="stylesheet"
         />
       </Head>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
       <Toaster />
       <Component {...pageProps} />
+      <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js" />
     </ClerkProvider>
   );
 };

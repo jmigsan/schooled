@@ -36,7 +36,7 @@ const Profile: NextPage<{ slug: string }> = ({ slug }) => {
               <div className="pb-4">{user.data?.username}</div>
             </div>
             <div>
-              <div className="pb-4 pl-2">{user.data?.username}'s posts:</div>
+              <div className="pb-4 pl-2">Posts from {user.data?.username}</div>
               <div className="flex max-w-3xl flex-col gap-4 ">
                 {userPosts.data?.map((post) => (
                   <PostView {...post} key={post.post.id} />

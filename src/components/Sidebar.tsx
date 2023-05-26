@@ -72,7 +72,7 @@ const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <li>
                 <Link
                   href="/"
-                  className="flex items-center rounded-lg border-2 border-transparent p-2 hover:border-red-400"
+                  className="flex items-center rounded-lg p-2 hover:bg-gray-200"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +91,7 @@ const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <li>
                 <Link
                   href="/addpost"
-                  className="flex items-center rounded-lg border-2 border-transparent p-2 hover:border-red-400"
+                  className="flex items-center rounded-lg p-2 hover:bg-gray-200"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

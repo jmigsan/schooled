@@ -11,7 +11,6 @@ const Home: NextPage = () => {
     <>
       <Sidebar>
         <div>
-          {/* <CreatePost /> */}
           <Feed />
           <AddPostButton />
         </div>

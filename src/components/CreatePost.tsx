@@ -12,7 +12,7 @@ const CreatePost = () => {
       setInput("");
       void ctx.posts.invalidate();
       toast.success("Post added");
-      router.push("/");
+      void router.push("/");
     },
     onError: (e) => {
       const errorMessage = e.data?.zodError?.fieldErrors.content;
