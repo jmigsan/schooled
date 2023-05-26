@@ -1,13 +1,13 @@
-import Sidebar from "./Sidebar";
+import Navbar from "./Navbar";
 import LoadingSpinner from "./LoadingSpinner";
 
 const LoadingPage = () => {
   return (
-    <Sidebar>
+    <Navbar>
       <div className="grid place-items-center">
         <LoadingSpinner />
       </div>
-    </Sidebar>
+    </Navbar>
   );
 };
 export default LoadingPage;

@@ -34,7 +34,7 @@ const CreatePost = () => {
     <div className="flex flex-col gap-3">
       <textarea
         placeholder="Write here..."
-        className="w-[55vw] rounded-xl p-2 text-black sm:w-[37vw]"
+        className="w-[55vw] rounded-xl border border-black p-2 text-black sm:w-[37vw]"
         rows={4}
         value={input}
         onChange={(e) => setInput(e.target.value)}

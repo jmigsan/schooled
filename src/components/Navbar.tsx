@@ -7,7 +7,7 @@ import {
 } from "@clerk/nextjs";
 import Link from "next/link";
 
-const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const Navbar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const user = useUser();
 
   return (
@@ -17,28 +17,6 @@ const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <div className="px-3 py-3 lg:px-5 lg:pl-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center justify-start">
-                <button
-                  data-drawer-target="logo-sidebar"
-                  data-drawer-toggle="logo-sidebar"
-                  aria-controls="logo-sidebar"
-                  type="button"
-                  className="inline-flex items-center rounded-lg p-2 text-sm hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-200 sm:hidden"
-                >
-                  <span className="sr-only">Open sidebar</span>
-                  <svg
-                    className="h-6 w-6"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                      d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-                    ></path>
-                  </svg>
-                </button>
                 <Link href="/" className="ml-2 flex md:mr-24">
                   <span className="self-center whitespace-nowrap rounded-xl bg-red-500 px-4 py-3 text-xl font-semibold text-white sm:text-2xl">
                     📚 Schooled
@@ -119,4 +97,4 @@ const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     </div>
   );
 };
-export default Sidebar;
+export default Navbar;

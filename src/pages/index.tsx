@@ -1,6 +1,6 @@
 import { useUser } from "@clerk/nextjs";
 import { type NextPage } from "next";
-import Sidebar from "~/components/Sidebar";
+import Navbar from "~/components/Navbar";
 import Feed from "~/components/Feed";
 import CreatePost from "~/components/CreatePost";
 import LoadingPage from "~/components/LoadingPage";
@@ -9,12 +9,12 @@ import AddPostButton from "~/components/AddPostButton";
 const Home: NextPage = () => {
   return (
     <>
-      <Sidebar>
+      <Navbar>
         <div>
           <Feed />
           <AddPostButton />
         </div>
-      </Sidebar>
+      </Navbar>
     </>
   );
 };

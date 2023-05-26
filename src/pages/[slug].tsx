@@ -7,7 +7,7 @@ import { api } from "~/utils/api";
 import { prisma } from "~/server/db";
 import superjson from "superjson";
 import Link from "next/link";
-import Sidebar from "~/components/Sidebar";
+import Navbar from "~/components/Navbar";
 import PostView from "~/components/PostView";
 
 const Profile: NextPage<{ slug: string }> = ({ slug }) => {
@@ -22,7 +22,7 @@ const Profile: NextPage<{ slug: string }> = ({ slug }) => {
       <Head>
         <title>Schooled - {user.data?.username}</title>
       </Head>
-      <Sidebar>
+      <Navbar>
         <section>
           <div className="pb-2">
             <Link href={"/"}>⬅ Go Back</Link>
@@ -45,7 +45,7 @@ const Profile: NextPage<{ slug: string }> = ({ slug }) => {
             </div>
           </div>
         </section>
-      </Sidebar>
+      </Navbar>
     </>
   );
 };

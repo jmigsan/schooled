@@ -1,6 +1,6 @@
 import { useUser } from "@clerk/nextjs";
 import { type NextPage } from "next";
-import Sidebar from "~/components/Sidebar";
+import Navbar from "~/components/Navbar";
 import CreatePost from "~/components/CreatePost";
 import LoadingPage from "~/components/LoadingPage";
 
@@ -13,7 +13,7 @@ const AddPost: NextPage = () => {
 
   return (
     <>
-      <Sidebar>
+      <Navbar>
         <div className="grid place-items-center">
           <div>
             <h1 className="pb-2 text-2xl font-bold">Add New Post 📚</h1>
@@ -21,7 +21,7 @@ const AddPost: NextPage = () => {
             <CreatePost />
           </div>
         </div>
-      </Sidebar>
+      </Navbar>
     </>
   );
 };
