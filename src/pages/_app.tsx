@@ -12,7 +12,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
     <ClerkProvider {...pageProps}>
       <Head>
         <title>Schooled</title>
-        <meta name="description" content="📚" />
+        <meta name="description" content="Educational micro-blogging app 📚" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Toaster />

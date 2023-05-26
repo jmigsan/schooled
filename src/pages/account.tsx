@@ -1,13 +1,11 @@
 import { SignInButton, SignedIn, SignedOut, UserProfile } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
-import SignOutButton from "~/components/auth/SignOutButton";
 
 import { api } from "~/utils/api";
 
 const Account: NextPage = () => {
   const posts = api.posts.getAll.useQuery();
-  console.log(posts.data);
 
   return (
     <>
