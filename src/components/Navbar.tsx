@@ -24,7 +24,7 @@ const Navbar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 </Link>
               </div>
               <div className="flex items-center gap-3">
-                <div className="hidden sm:block">
+                <div className="hidden xs:block">
                   <SignedIn>Hello {user.user?.username}</SignedIn>
                 </div>
                 <div>
