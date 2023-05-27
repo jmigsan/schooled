@@ -29,7 +29,7 @@ const Navbar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 </div>
                 <div>
                   <SignedIn>
-                    <UserButton />
+                    <UserButton afterSignOutUrl="/" />
                   </SignedIn>
                   <SignedOut>
                     <SignInButton />
