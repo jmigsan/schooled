@@ -12,14 +12,14 @@ const PostView = (props: PostWithAuthor) => {
   return (
     <div className="rounded-2xl bg-red-400 p-4 text-white">
       <div className="flex items-center gap-3 ">
-        <Link href={`/${author.id}`}>
+        <Link href={`/user/${author.id}`}>
           <img
             src={author.profileImageUrl}
             alt={`Profile pic of ${author.username}`}
             className="w-10 rounded-full"
           />
         </Link>
-        <Link href={`/${author.id}`}>
+        <Link href={`/user/${author.id}`}>
           <p>
             {author.username} - {dayjs(post.createdAt).fromNow()}
           </p>
