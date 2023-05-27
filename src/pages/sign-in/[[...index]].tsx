@@ -1,11 +1,14 @@
 import { SignIn } from "@clerk/nextjs";
+import Navbar from "~/components/Navbar";
 
 const SignInPage = () => {
   return (
-    <div className="h-screen bg-gradient-to-br from-purple-500 to-blue-500">
-      <div className="p-4">
-        <SignIn />
-      </div>
+    <div>
+      <Navbar>
+        <div className="grid place-items-center">
+          <SignIn />
+        </div>
+      </Navbar>
     </div>
   );
 };
